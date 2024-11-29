@@ -1,0 +1,5 @@
+-->La opeacion elegida para el ADC, fue por interrupcion ,a fin de evitar codigo bloqueante.
+-->Se configuro al ADC en "single mode".
+-->El valor adquirido se pasa a " task_pwm.c"  por medio de la variable global : duty_cycle 
+--> Ver video adjunto. Señal de PWM + Señal analogica de entrada al ADC.(ADC_PWM.mp4)
+ tiempo de ejecucion : 28ms   

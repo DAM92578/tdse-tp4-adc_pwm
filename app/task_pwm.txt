@@ -1,0 +1,22 @@
+-->A fin de minimizar tiempos de ejecucion, la modulacion del "duty cycle", se realizo de la forma vista en el tp :
+"bare-metal_app_pwm_hw_gpio_irq_nucleo-F103rb". 
+En dicho TP, el "duty cycle" se modifica , modificando el valor de "TIMX->CCR1",
+para nuestro caso "TIM3->CCR1".
+Este valor llega a la funcion "task_pwm.c" por medio de la variable "duty_cycle", 
+la cual fue declarada en "main.c" y luego invocada como "extern" en "task_adc.c" y en "task_pwm.c"
+
+
+Parametros para el PWM
+
+El valor de "period" fue elegido en 4000 (ver"main.c" "#define PERIOD 4000u"), 
+para que coincida con el valor maximo entregado por el ADC, almacenado en la variable :"duty_cycle". 
+Con ese valor de "period" se calculo el valor necesario de "prescaler" 160 (ver"main.c" "#define PRESCALER 160u") 
+para llegar a un valor de frecuencia,del PWM, de 100Hz, 
+ya que con dicho valor de frecuencia el "ojo humano" no llega a percibir el parpadeo del led. 
+
+ 
+        	             64 Mhz                                        
+  	frecuencia = ------------------ = 100HZ           
+        	           160*4000                     
+
+ tiempo de ejecucion : 1ms               
